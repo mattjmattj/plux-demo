@@ -19,6 +19,11 @@ class ActionLog {
 		}
 		$data = print_r($action->getData(),true);
 		$_SESSION['log'][] = date('c') . " : " . $action->getType() . " ($data)";
+		
+		if ($action->getType() === 'clearlog') {
+			$_SESSION['log'] = [];
+			$this->emit('clear');
+		}
 	}
 	
 	/**

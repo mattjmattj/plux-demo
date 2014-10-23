@@ -6,18 +6,21 @@
 
 namespace Plux\Demo\Component;
 
-use \Plux\ComponentTrait;
 use \Plux\Plux;
+use \Plux\Action;
 
-class Log {
-	
-	use ComponentTrait;
+class Log extends \Plux\Demo\Framework\Component {
 	
 	public function render () {
 		$items = Plux::getStore('ActionLog')->getData();
 		$items = array_reverse ($items, true);
 		?>
 		<h3>Action log</h3>
+		<div class="row">
+			<form action="?clearlog" method="POST">
+				<button type="submit" title="Clear log" class="rounded alert tiny button">Clear log</button>
+			</form>
+		</div>
 		<table>
 		<?php
 		foreach ($items as $id => $item) :
@@ -32,4 +35,13 @@ class Log {
 		<?php
 	}
 	
+
+	public function getRoutes () {
+		return ['/?clearlog' => [$this, 'clearlog'] ];
+	}
+	
+	public function clearlog () {
+		$action = new Action ('clearlog');
+		Plux::getDispatcher()->dispatch($action);
+	}
 }

@@ -6,12 +6,10 @@
 
 namespace Plux\Demo\Component;
 
-use \Plux\ComponentTrait;
 use \Plux\Plux;
+use \Plux\Action;
 
-class TodoList {
-	
-	use ComponentTrait;
+class TodoList extends \Plux\Demo\Framework\Component {
 	
 	public function render () {
 		$items = Plux::getStore('Items')->getData();
@@ -36,6 +34,18 @@ class TodoList {
 		?>
 		</ul>
 		<?php
+	}
+	
+	public function getRoutes () {
+		return ['/?delete' => [$this, 'delete'] ];
+	}
+	
+	public function delete () {
+		if (!isset($_POST['id'])) {
+			return;
+		}
+		$action = new Action ('delete', ['id' => $_POST['id']]);
+		Plux::getDispatcher()->dispatch($action);
 	}
 	
 }

@@ -6,11 +6,8 @@
 
 namespace Plux\Demo\Component;
 
-use \Plux\ComponentTrait;
 
-class Footer {
-	
-	use ComponentTrait;
+class Footer extends \Plux\Demo\Framework\Component {
 	
 	public function render () {
 		?>

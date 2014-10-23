@@ -6,12 +6,9 @@
 
 namespace Plux\Demo\Component;
 
-use Plux\ComponentTrait;
 use Plux\Plux;
 
-class Flash {
-	
-	use ComponentTrait;
+class Flash extends \Plux\Demo\Framework\Component {
 	
 	private $messages;
 	
@@ -41,6 +38,10 @@ class Flash {
 		
 		Plux::getStore('Items')->on('delete', function($id, $text) {
 			$this->messages[] = "Deleted item \"$text\"";
+		});
+		
+		Plux::getStore('ActionLog')->on('clear', function() {
+			$this->messages[] = "Log cleared";
 		});
 	}
 }

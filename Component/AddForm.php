@@ -6,11 +6,10 @@
 
 namespace Plux\Demo\Component;
 
-use \Plux\ComponentTrait;
+use \Plux\Plux;
+use \Plux\Action;
 
-class AddForm {
-	
-	use ComponentTrait;
+class AddForm extends \Plux\Demo\Framework\Component {
 	
 	public function render () {
 		?>
@@ -20,6 +19,18 @@ class AddForm {
 			</label>
 		</form>
 		<?php
+	}
+	
+	public function getRoutes () {
+		return ['/?add' => [$this, 'add'] ];
+	}
+	
+	public function add () {
+		if (!isset($_POST['text'])) {
+			return;
+		}
+		$action = new Action ('add', ['text' => $_POST['text']]);
+		Plux::getDispatcher()->dispatch($action);
 	}
 	
 }

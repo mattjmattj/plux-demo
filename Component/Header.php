@@ -6,11 +6,7 @@
 
 namespace Plux\Demo\Component;
 
-use \Plux\ComponentTrait;
-
-class Header {
-	
-	use ComponentTrait;
+class Header extends \Plux\Demo\Framework\Component {
 	
 	public function render () {
 		?>
