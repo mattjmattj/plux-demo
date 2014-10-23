@@ -1,0 +1,11 @@
+{
+	"require": {
+		"php": ">=5.4.0",
+		"mattjmattj/plux": "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"Plux\\Demo\\": "."
+		}
+	}
+}
