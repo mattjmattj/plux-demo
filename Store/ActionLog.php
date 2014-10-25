@@ -3,13 +3,14 @@
 
 namespace Plux\Demo\Store;
 
+use \Plux\Store;
 use \Plux\StoreTrait;
 use \Plux\Action;
 
 /**
  * For demo purpose : log all Action in session
  */ 
-class ActionLog {
+class ActionLog implements Store {
 	
 	use StoreTrait;
 	

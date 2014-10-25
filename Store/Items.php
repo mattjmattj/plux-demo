@@ -3,6 +3,7 @@
 
 namespace Plux\Demo\Store;
 
+use \Plux\Store;
 use \Plux\StoreTrait;
 use \Plux\Action;
 
@@ -11,7 +12,7 @@ use \Plux\Action;
  * For this demo we use the session to store items. We could of course use any
  * kind of persistence instead.
  */ 
-class Items {
+class Items implements Store {
 	
 	use StoreTrait;
 	
